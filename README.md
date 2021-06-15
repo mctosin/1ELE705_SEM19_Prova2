@@ -1,3 +1,5 @@
-# 1ELE705_SEM17_S3TreeWithParentLink
+# 1ELE705_SEM19_Segunda_Prova
 
-Modificação da estrutura do programa para incluir o link para o pai nos nós de uma árvore binária de cartas de baralho. Implementação de uma nova função recursiva para a inserção de elementos nesta árvore. Construção das funções de teste para esta nova função de inserção de acordo com a metodologia TDD (Test Driven Development).
+Segunda prova de Algoritmos e Estruturas de Dados.
+
+As instruções encontram-se nos comentários em main.c
