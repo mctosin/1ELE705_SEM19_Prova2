@@ -47,6 +47,7 @@ struct treeCardNode {
 	Card card; /* Cada folha contém uma carta */
 	struct treeCardNode* leftPtr;  /* pointer to left subtree */
 	struct treeCardNode* rightPtr; /* pointer to right subtree */
+	struct treeCardNode* vaderPtr; // Ponteiro para o nó pai
 }; /* end structure treeNode */
 
 typedef struct treeCardNode TreeCardNode; /* synonym for struct treeNode */
@@ -61,5 +62,8 @@ Card dequeueFromDeck(ListCardNodePtr* headPtr, ListCardNodePtr* tailPtr);
 void enqueueOnDeck(ListCardNodePtr* headPtr, ListCardNodePtr* tailPtr, Card card);
 int isDeckEmpty(ListCardNodePtr sPtr);
 void insertTreeHandNode(TreeCardNodePtr* tPtr, Card card);
+void insertTreeHandNode2(TreeCardNodePtr* tPtr, Card card, TreeCardNodePtr vaderPtr);
+void iterativeInsertTreeHandNode(TreeCardNodePtr* tPtr, Card card);
+Card* treeSearch(TreeCardNodePtr tPtr, Card keyCard);
 
 #endif

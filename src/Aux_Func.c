@@ -272,3 +272,24 @@ size_t saveFileOfShuffledFr52Deck(ListCardNodePtr sPtr) {
 	fclose(cfPtr);
 	return 0;
 }
+
+
+// Contribuições dos alunos
+
+// IsadoraMartines
+
+int TestTreeParent(TreeCardNodePtr myTree, TreeCardNodePtr yourTree) {
+
+	if (myTree == NULL || yourTree == NULL) return 0;
+
+	if (myTree->vaderPtr != NULL && yourTree->vaderPtr != NULL) {
+		if ((myTree->vaderPtr)->card.suit_number != (yourTree->vaderPtr)->card.suit_number ||
+			(myTree->vaderPtr)->card.face_number != (yourTree->vaderPtr)->card.face_number ||
+			strcmp((myTree->vaderPtr)->card.face, (yourTree->vaderPtr)->card.face) != 0 ||
+			strcmp((myTree->vaderPtr)->card.suit, (yourTree->vaderPtr)->card.suit) != 0)	return 1;
+	}
+	int ret_left = TestTreeParent(myTree->leftPtr, yourTree->leftPtr);
+	int ret_right = TestTreeParent(myTree->rightPtr, yourTree->rightPtr);
+
+	return ret_left + ret_right;
+}

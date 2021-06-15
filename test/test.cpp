@@ -696,3 +696,713 @@ TEST(insertThreeHandNode, insertShuffled52FrDeckElementsIntoTheTree) {
 
     ASSERT_TRUE(ListMatch(actualDeckHead, orderedDeck));
 }
+
+TEST(insertThreeHandNode2, insertSixFullyDifferentElementsAndTryOneEqualIntoTheTree) {
+    ListCardNodePtr expectedDeckHead = NULL, expectedDeckTail;
+    Card card = { face[0], suit[2], 1, 3 }; // Ás de paus
+    TreeCardNodePtr myTree = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+
+    //primeiro nó
+    myTree->card = card;
+    myTree->vaderPtr = NULL;
+    myTree->leftPtr = NULL;
+    myTree->rightPtr = NULL;
+
+    TreeCardNodePtr leaf1, leaf2, leaf3, leaf4, leaf5, leaf6;
+
+    TreeCardNodePtr yourTree = NULL;
+    insertTreeHandNode2(&yourTree, card, NULL);
+
+    leaf1 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[2], suit[3], 3, 4 }; // Três de espadas
+    leaf1->card = card;
+
+    leaf1->vaderPtr = myTree;
+    leaf1->leftPtr = NULL;
+    leaf1->rightPtr = NULL;
+
+    myTree->rightPtr = leaf1;
+
+    insertTreeHandNode2(&yourTree, card, NULL);
+
+    leaf3 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[3], suit[2], 4, 3 }; // Quatro de paus
+
+    leaf3->vaderPtr = leaf1;
+
+    leaf3->card = card;
+    leaf3->leftPtr = leaf3->rightPtr = NULL;
+    leaf1->leftPtr = leaf3;
+
+    insertTreeHandNode2(&yourTree, card, NULL);
+
+    leaf4 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[8], suit[3], 9, 4 }; // Nove de espadas
+
+    leaf4->vaderPtr = leaf1;
+
+    leaf4->card = card;
+    leaf4->leftPtr = leaf4->rightPtr = NULL;
+    leaf1->rightPtr = leaf4;
+
+    insertTreeHandNode2(&yourTree, card, NULL);
+
+    leaf2 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[10], suit[1], 11, 2 }; // valete de ouro
+
+    leaf2->vaderPtr = myTree;
+
+    leaf2->card = card;
+    leaf2->leftPtr = leaf2->rightPtr = NULL;
+    myTree->leftPtr = leaf2;
+
+    insertTreeHandNode2(&yourTree, card, NULL);
+
+    leaf5 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[4], suit[0], 5, 1 }; // cinco de copas
+
+    leaf5->vaderPtr = leaf2;
+
+    leaf5->card = card;
+    leaf5->leftPtr = leaf5->rightPtr = NULL;
+    leaf2->leftPtr = leaf5;
+
+    insertTreeHandNode2(&yourTree, card, NULL);
+
+    leaf6 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[12], suit[1], 13, 2 }; // rei de ouro
+
+    leaf6->vaderPtr = leaf2;
+
+    leaf6->card = card;
+    leaf6->leftPtr = leaf6->rightPtr = NULL;
+    leaf2->rightPtr = leaf6;
+
+    insertTreeHandNode2(&yourTree, card, NULL);
+
+    card = { face[10], suit[1], 11, 2 }; // valete de ouro
+    insertTreeHandNode2(&yourTree, card, NULL);
+
+    IOrd(myTree, &expectedDeckHead, &expectedDeckTail);
+
+    ListCardNodePtr actualDeckHead = NULL, actualDeckTail;
+    IOrd(yourTree, &actualDeckHead, &actualDeckTail);
+
+    ASSERT_TRUE(ListMatch(actualDeckHead, expectedDeckHead));
+}
+
+TEST(insertThreeHandNode2, insertSixFullyDifferentElementsAndTryOneEqualIntoTheTreeAndTestParent) {
+    ListCardNodePtr expectedDeckHead = NULL, expectedDeckTail;
+    Card card = { face[0], suit[2], 1, 3 }; // Ás de paus
+    TreeCardNodePtr myTree = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+
+    //primeiro nó
+    myTree->card = card;
+    myTree->vaderPtr = NULL;
+    myTree->leftPtr = NULL;
+    myTree->rightPtr = NULL;
+
+    TreeCardNodePtr leaf1, leaf2, leaf3, leaf4, leaf5, leaf6;
+
+    TreeCardNodePtr yourTree = NULL;
+    insertTreeHandNode2(&yourTree, card, NULL);
+
+    leaf1 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[2], suit[3], 3, 4 }; // Três de espadas
+    leaf1->card = card;
+
+    leaf1->vaderPtr = myTree;
+    leaf1->leftPtr = NULL;
+    leaf1->rightPtr = NULL;
+
+    myTree->rightPtr = leaf1;
+
+    insertTreeHandNode2(&yourTree, card, NULL);
+
+    leaf3 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[3], suit[2], 4, 3 }; // Quatro de paus
+
+    leaf3->vaderPtr = leaf1;
+
+    leaf3->card = card;
+    leaf3->leftPtr = leaf3->rightPtr = NULL;
+    leaf1->leftPtr = leaf3;
+
+    insertTreeHandNode2(&yourTree, card, NULL);
+
+    leaf4 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[8], suit[3], 9, 4 }; // Nove de espadas
+
+    leaf4->vaderPtr = leaf1;
+
+    leaf4->card = card;
+    leaf4->leftPtr = leaf4->rightPtr = NULL;
+    leaf1->rightPtr = leaf4;
+
+    insertTreeHandNode2(&yourTree, card, NULL);
+
+    leaf2 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[10], suit[1], 11, 2 }; // valete de ouro
+
+    leaf2->vaderPtr = myTree;
+
+    leaf2->card = card;
+    leaf2->leftPtr = leaf2->rightPtr = NULL;
+    myTree->leftPtr = leaf2;
+
+    insertTreeHandNode2(&yourTree, card, NULL);
+
+    leaf5 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[4], suit[0], 5, 1 }; // cinco de copas
+
+    leaf5->vaderPtr = leaf2;
+
+    leaf5->card = card;
+    leaf5->leftPtr = leaf5->rightPtr = NULL;
+    leaf2->leftPtr = leaf5;
+
+    insertTreeHandNode2(&yourTree, card, NULL);
+
+    leaf6 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[12], suit[1], 13, 2 }; // rei de ouro
+
+    leaf6->vaderPtr = leaf2;
+
+    leaf6->card = card;
+    leaf6->leftPtr = leaf6->rightPtr = NULL;
+    leaf2->rightPtr = leaf6;
+
+    insertTreeHandNode2(&yourTree, card, NULL);
+
+    card = { face[10], suit[1], 11, 2 }; // valete de ouro
+    insertTreeHandNode2(&yourTree, card, NULL);
+
+    IOrd(myTree, &expectedDeckHead, &expectedDeckTail);
+
+    ListCardNodePtr actualDeckHead = NULL, actualDeckTail;
+    IOrd(yourTree, &actualDeckHead, &actualDeckTail);
+
+
+    EXPECT_TRUE(!(TestTreeParent(myTree, yourTree)));
+}
+
+TEST(insertThreeHandNode2, insertOneElementIntoTheTree) {
+    ListCardNodePtr expectedDeckHead = NULL, expectedDeckTail;
+    Card card = { face[0], suit[3], 1, 4 };
+    TreeCardNodePtr myTree = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    myTree->card = card;
+    myTree->leftPtr = myTree->rightPtr = NULL;
+    IOrd(myTree, &expectedDeckHead, &expectedDeckTail);
+
+    ListCardNodePtr actualDeckHead = NULL, actualDeckTail;
+    TreeCardNodePtr yourTree = NULL;
+    insertTreeHandNode2(&yourTree, card, NULL);
+    IOrd(yourTree, &actualDeckHead, &actualDeckTail);
+
+    ASSERT_TRUE(ListMatch(actualDeckHead, expectedDeckHead));
+}
+
+TEST(insertThreeHandNode2, insertShuffled52FrDeckElementsIntoTheTree) {
+    ListCardNodePtr orderedDeck = NULL;
+    ReadFileOfOneFr52Deck(&orderedDeck);
+
+    ListCardNodePtr shuffledDeck = NULL;
+    readFileOfShuffledFr52Deck(&shuffledDeck);
+
+    TreeCardNodePtr yourTree = NULL;
+    ListCardNodePtr shuffledPtr = shuffledDeck;
+    Card card;
+    while (shuffledPtr != NULL) {
+        card = shuffledPtr->card;
+        insertTreeHandNode2(&yourTree, card, NULL);
+        shuffledPtr = shuffledPtr->nextPtr;
+    }
+
+    ListCardNodePtr actualDeckHead = NULL, actualDeckTail;
+    IOrd(yourTree, &actualDeckHead, &actualDeckTail);
+
+    ASSERT_TRUE(ListMatch(actualDeckHead, orderedDeck));
+}
+
+TEST(treeSearch, searchInAnEmptyTree) {
+    TreeCardNodePtr actualTree = NULL;
+    
+    Card card = { face[8], suit[3], 9, 4 }; // Nove de espadas
+ 
+    EXPECT_EQ(NULL, treeSearch(actualTree, card));
+}
+
+TEST(treeSearch, searchMatchingCardInOneCardTree) {
+    TreeCardNodePtr actualTree = NULL;
+    actualTree = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    Card card = { face[8], suit[3], 9, 4 }; // Nove de espadas
+    actualTree->card = card;
+    actualTree->leftPtr = actualTree->rightPtr = actualTree->vaderPtr = NULL;
+
+
+    EXPECT_EQ(&(actualTree->card), treeSearch(actualTree, card));
+}
+
+TEST(treeSearch, searchUnmatchingCardInOneCardTree) {
+    TreeCardNodePtr actualTree = NULL;
+    actualTree = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    Card card = { face[8], suit[3], 9, 4 }; // Nove de espadas
+    actualTree->card = card;
+    actualTree->leftPtr = actualTree->rightPtr = actualTree->vaderPtr = NULL;
+
+    Card SearchCard = { face[10], suit[1], 11, 2 }; // valete de ouro
+
+    EXPECT_EQ(NULL, treeSearch(actualTree, SearchCard));
+}
+
+TEST(treeSearch, searchMatchingCardInSixCardTree) {
+    
+    Card card = { face[0], suit[2], 1, 3 }; // Ás de paus
+    TreeCardNodePtr myTree = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+
+    //primeiro nó
+    myTree->card = card;
+    myTree->vaderPtr = NULL;
+    myTree->leftPtr = NULL;
+    myTree->rightPtr = NULL;
+
+    TreeCardNodePtr leaf1, leaf2, leaf3, leaf4, leaf5, leaf6;
+
+    leaf1 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[2], suit[3], 3, 4 }; // Três de espadas
+    leaf1->card = card;
+
+    leaf1->vaderPtr = myTree;
+    leaf1->leftPtr = NULL;
+    leaf1->rightPtr = NULL;
+
+    myTree->rightPtr = leaf1;
+       
+    leaf3 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[3], suit[2], 4, 3 }; // Quatro de paus
+
+    leaf3->vaderPtr = leaf1;
+
+    leaf3->card = card;
+    leaf3->leftPtr = leaf3->rightPtr = NULL;
+    leaf1->leftPtr = leaf3;
+
+    leaf4 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[8], suit[3], 9, 4 }; // Nove de espadas
+
+    leaf4->vaderPtr = leaf1;
+
+    leaf4->card = card;
+    leaf4->leftPtr = leaf4->rightPtr = NULL;
+    leaf1->rightPtr = leaf4;
+
+    leaf2 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[10], suit[1], 11, 2 }; // valete de ouro
+
+    leaf2->vaderPtr = myTree;
+
+    leaf2->card = card;
+    leaf2->leftPtr = leaf2->rightPtr = NULL;
+    myTree->leftPtr = leaf2;
+
+    leaf5 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[4], suit[0], 5, 1 }; // cinco de copas
+
+    leaf5->vaderPtr = leaf2;
+
+    leaf5->card = card;
+    leaf5->leftPtr = leaf5->rightPtr = NULL;
+    leaf2->leftPtr = leaf5;
+
+    leaf6 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[12], suit[1], 13, 2 }; // rei de ouro
+
+    leaf6->vaderPtr = leaf2;
+
+    leaf6->card = card;
+    leaf6->leftPtr = leaf6->rightPtr = NULL;
+    leaf2->rightPtr = leaf6;
+
+    Card SearchCard = { face[10], suit[1], 11, 2 }; // valete de ouro
+    EXPECT_EQ( &(leaf2->card), treeSearch(myTree, SearchCard));
+
+    SearchCard = { face[4], suit[0], 5, 1 }; // cinco de copas
+    EXPECT_EQ(&(leaf5->card), treeSearch(myTree, SearchCard));
+
+    SearchCard = { face[8], suit[3], 9, 4 }; // Nove de espadas
+    EXPECT_EQ(&(leaf4->card), treeSearch(myTree, SearchCard));
+}
+
+TEST(treeSearch, searchUnmatchingCardInSixCardTree) {
+
+    Card card = { face[0], suit[2], 1, 3 }; // Ás de paus
+    TreeCardNodePtr myTree = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+
+    //primeiro nó
+    myTree->card = card;
+    myTree->vaderPtr = NULL;
+    myTree->leftPtr = NULL;
+    myTree->rightPtr = NULL;
+
+    TreeCardNodePtr leaf1, leaf2, leaf3, leaf4, leaf5, leaf6;
+
+    leaf1 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[2], suit[3], 3, 4 }; // Três de espadas
+    leaf1->card = card;
+
+    leaf1->vaderPtr = myTree;
+    leaf1->leftPtr = NULL;
+    leaf1->rightPtr = NULL;
+
+    myTree->rightPtr = leaf1;
+
+    leaf3 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[3], suit[2], 4, 3 }; // Quatro de paus
+
+    leaf3->vaderPtr = leaf1;
+
+    leaf3->card = card;
+    leaf3->leftPtr = leaf3->rightPtr = NULL;
+    leaf1->leftPtr = leaf3;
+
+    leaf4 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[8], suit[3], 9, 4 }; // Nove de espadas
+
+    leaf4->vaderPtr = leaf1;
+
+    leaf4->card = card;
+    leaf4->leftPtr = leaf4->rightPtr = NULL;
+    leaf1->rightPtr = leaf4;
+
+    leaf2 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[10], suit[1], 11, 2 }; // valete de ouro
+
+    leaf2->vaderPtr = myTree;
+
+    leaf2->card = card;
+    leaf2->leftPtr = leaf2->rightPtr = NULL;
+    myTree->leftPtr = leaf2;
+
+    leaf5 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[4], suit[0], 5, 1 }; // cinco de copas
+
+    leaf5->vaderPtr = leaf2;
+
+    leaf5->card = card;
+    leaf5->leftPtr = leaf5->rightPtr = NULL;
+    leaf2->leftPtr = leaf5;
+
+    leaf6 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[12], suit[1], 13, 2 }; // rei de ouro
+
+    leaf6->vaderPtr = leaf2;
+
+    leaf6->card = card;
+    leaf6->leftPtr = leaf6->rightPtr = NULL;
+    leaf2->rightPtr = leaf6;
+
+    Card SearchCard = { face[11], suit[1], 12, 2 }; // dama de ouro
+
+    EXPECT_EQ(NULL, treeSearch(myTree, SearchCard));
+}
+
+TEST(treeSearch, searchPartialCardMatchInSixCardTree) {
+
+    Card card = { face[0], suit[2], 1, 3 }; // Ás de paus
+    TreeCardNodePtr myTree = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+
+    //primeiro nó
+    myTree->card = card;
+    myTree->vaderPtr = NULL;
+    myTree->leftPtr = NULL;
+    myTree->rightPtr = NULL;
+
+    TreeCardNodePtr leaf1, leaf2, leaf3, leaf4, leaf5, leaf6;
+
+    leaf1 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[2], suit[3], 3, 4 }; // Três de espadas
+    leaf1->card = card;
+
+    leaf1->vaderPtr = myTree;
+    leaf1->leftPtr = NULL;
+    leaf1->rightPtr = NULL;
+
+    myTree->rightPtr = leaf1;
+
+    leaf3 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[3], suit[2], 4, 3 }; // Quatro de paus
+
+    leaf3->vaderPtr = leaf1;
+
+    leaf3->card = card;
+    leaf3->leftPtr = leaf3->rightPtr = NULL;
+    leaf1->leftPtr = leaf3;
+
+    leaf4 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[8], suit[3], 9, 4 }; // Nove de espadas
+
+    leaf4->vaderPtr = leaf1;
+
+    leaf4->card = card;
+    leaf4->leftPtr = leaf4->rightPtr = NULL;
+    leaf1->rightPtr = leaf4;
+
+    leaf2 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[10], suit[1], 11, 2 }; // valete de ouro
+
+    leaf2->vaderPtr = myTree;
+
+    leaf2->card = card;
+    leaf2->leftPtr = leaf2->rightPtr = NULL;
+    myTree->leftPtr = leaf2;
+
+    leaf5 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[4], suit[0], 5, 1 }; // cinco de copas
+
+    leaf5->vaderPtr = leaf2;
+
+    leaf5->card = card;
+    leaf5->leftPtr = leaf5->rightPtr = NULL;
+    leaf2->leftPtr = leaf5;
+
+    leaf6 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[12], suit[1], 13, 2 }; // rei de ouro
+
+    leaf6->vaderPtr = leaf2;
+
+    leaf6->card = card;
+    leaf6->leftPtr = leaf6->rightPtr = NULL;
+    leaf2->rightPtr = leaf6;
+
+    // Detecta se a função verifica os números e os nomes para identificar que a carta é igual aquela procurada.
+    Card SearchCard = { face[3], suit[3], 3, 4 }; // Três de espadas, mas no texto é um quatro de espadas
+    EXPECT_EQ(NULL, treeSearch(myTree, SearchCard)); // Deve retornar nulo se a função faz o teste de igualdade completo entre as cartas
+
+}
+
+TEST(iterativeInsertThreeHandNode, insertOneElementIntoTheTree) {
+    ListCardNodePtr expectedDeckHead = NULL, expectedDeckTail;
+    Card card = { face[0], suit[3], 1, 4 };
+    TreeCardNodePtr myTree = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    myTree->card = card;
+    myTree->leftPtr = myTree->rightPtr = NULL;
+    IOrd(myTree, &expectedDeckHead, &expectedDeckTail);
+
+    ListCardNodePtr actualDeckHead = NULL, actualDeckTail;
+    TreeCardNodePtr yourTree = NULL;
+    iterativeInsertTreeHandNode(&yourTree, card);
+    IOrd(yourTree, &actualDeckHead, &actualDeckTail);
+
+    ASSERT_TRUE(ListMatch(actualDeckHead, expectedDeckHead));
+}
+
+TEST(iterativeInsertThreeHandNode, insertShuffled52FrDeckElementsIntoTheTree) {
+    ListCardNodePtr orderedDeck = NULL;
+    ReadFileOfOneFr52Deck(&orderedDeck);
+
+    ListCardNodePtr shuffledDeck = NULL;
+    readFileOfShuffledFr52Deck(&shuffledDeck);
+
+    TreeCardNodePtr yourTree = NULL;
+    ListCardNodePtr shuffledPtr = shuffledDeck;
+    Card card;
+    while (shuffledPtr != NULL) {
+        card = shuffledPtr->card;
+        iterativeInsertTreeHandNode(&yourTree, card);
+        shuffledPtr = shuffledPtr->nextPtr;
+    }
+
+    ListCardNodePtr actualDeckHead = NULL, actualDeckTail;
+    IOrd(yourTree, &actualDeckHead, &actualDeckTail);
+
+    ASSERT_TRUE(ListMatch(actualDeckHead, orderedDeck));
+}
+
+TEST(iterativeInsertThreeHandNode, insertSixFullyDifferentElementsAndTryOneEqualIntoTheTree) {
+    ListCardNodePtr expectedDeckHead = NULL, expectedDeckTail;
+    Card card = { face[0], suit[2], 1, 3 }; // Ás de paus
+    TreeCardNodePtr myTree = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+
+    //primeiro nó
+    myTree->card = card;
+    myTree->vaderPtr = NULL;
+    myTree->leftPtr = NULL;
+    myTree->rightPtr = NULL;
+
+    TreeCardNodePtr leaf1, leaf2, leaf3, leaf4, leaf5, leaf6;
+
+    TreeCardNodePtr yourTree = NULL;
+    iterativeInsertTreeHandNode(&yourTree, card);
+
+    leaf1 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[2], suit[3], 3, 4 }; // Três de espadas
+    leaf1->card = card;
+
+    leaf1->vaderPtr = myTree;
+    leaf1->leftPtr = NULL;
+    leaf1->rightPtr = NULL;
+
+    myTree->rightPtr = leaf1;
+
+    iterativeInsertTreeHandNode(&yourTree, card);
+
+    leaf3 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[3], suit[2], 4, 3 }; // Quatro de paus
+
+    leaf3->vaderPtr = leaf1;
+
+    leaf3->card = card;
+    leaf3->leftPtr = leaf3->rightPtr = NULL;
+    leaf1->leftPtr = leaf3;
+
+    iterativeInsertTreeHandNode(&yourTree, card);
+
+    leaf4 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[8], suit[3], 9, 4 }; // Nove de espadas
+
+    leaf4->vaderPtr = leaf1;
+
+    leaf4->card = card;
+    leaf4->leftPtr = leaf4->rightPtr = NULL;
+    leaf1->rightPtr = leaf4;
+
+    iterativeInsertTreeHandNode(&yourTree, card);
+
+    leaf2 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[10], suit[1], 11, 2 }; // valete de ouro
+
+    leaf2->vaderPtr = myTree;
+
+    leaf2->card = card;
+    leaf2->leftPtr = leaf2->rightPtr = NULL;
+    myTree->leftPtr = leaf2;
+
+    iterativeInsertTreeHandNode(&yourTree, card);
+
+    leaf5 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[4], suit[0], 5, 1 }; // cinco de copas
+
+    leaf5->vaderPtr = leaf2;
+
+    leaf5->card = card;
+    leaf5->leftPtr = leaf5->rightPtr = NULL;
+    leaf2->leftPtr = leaf5;
+
+    iterativeInsertTreeHandNode(&yourTree, card);
+
+    leaf6 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[12], suit[1], 13, 2 }; // rei de ouro
+
+    leaf6->vaderPtr = leaf2;
+
+    leaf6->card = card;
+    leaf6->leftPtr = leaf6->rightPtr = NULL;
+    leaf2->rightPtr = leaf6;
+
+    iterativeInsertTreeHandNode(&yourTree, card);
+
+    card = { face[10], suit[1], 11, 2 }; // valete de ouro
+    iterativeInsertTreeHandNode(&yourTree, card);
+
+    IOrd(myTree, &expectedDeckHead, &expectedDeckTail);
+
+    ListCardNodePtr actualDeckHead = NULL, actualDeckTail;
+    IOrd(yourTree, &actualDeckHead, &actualDeckTail);
+
+    ASSERT_TRUE(ListMatch(actualDeckHead, expectedDeckHead));
+}
+
+TEST(iterativeInsertThreeHandNode, insertSixFullyDifferentElementsAndTryOneEqualIntoTheTreeAndTestParent) {
+    ListCardNodePtr expectedDeckHead = NULL, expectedDeckTail;
+    Card card = { face[0], suit[2], 1, 3 }; // Ás de paus
+    TreeCardNodePtr myTree = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+
+    //primeiro nó
+    myTree->card = card;
+    myTree->vaderPtr = NULL;
+    myTree->leftPtr = NULL;
+    myTree->rightPtr = NULL;
+
+    TreeCardNodePtr leaf1, leaf2, leaf3, leaf4, leaf5, leaf6;
+
+    TreeCardNodePtr yourTree = NULL;
+    iterativeInsertTreeHandNode(&yourTree, card);
+
+    leaf1 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[2], suit[3], 3, 4 }; // Três de espadas
+    leaf1->card = card;
+
+    leaf1->vaderPtr = myTree;
+    leaf1->leftPtr = NULL;
+    leaf1->rightPtr = NULL;
+
+    myTree->rightPtr = leaf1;
+
+    iterativeInsertTreeHandNode(&yourTree, card);
+
+    leaf3 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[3], suit[2], 4, 3 }; // Quatro de paus
+
+    leaf3->vaderPtr = leaf1;
+
+    leaf3->card = card;
+    leaf3->leftPtr = leaf3->rightPtr = NULL;
+    leaf1->leftPtr = leaf3;
+
+    iterativeInsertTreeHandNode(&yourTree, card);
+
+    leaf4 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[8], suit[3], 9, 4 }; // Nove de espadas
+
+    leaf4->vaderPtr = leaf1;
+
+    leaf4->card = card;
+    leaf4->leftPtr = leaf4->rightPtr = NULL;
+    leaf1->rightPtr = leaf4;
+
+    iterativeInsertTreeHandNode(&yourTree, card);
+
+    leaf2 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[10], suit[1], 11, 2 }; // valete de ouro
+
+    leaf2->vaderPtr = myTree;
+
+    leaf2->card = card;
+    leaf2->leftPtr = leaf2->rightPtr = NULL;
+    myTree->leftPtr = leaf2;
+
+    iterativeInsertTreeHandNode(&yourTree, card);
+
+    leaf5 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[4], suit[0], 5, 1 }; // cinco de copas
+
+    leaf5->vaderPtr = leaf2;
+
+    leaf5->card = card;
+    leaf5->leftPtr = leaf5->rightPtr = NULL;
+    leaf2->leftPtr = leaf5;
+
+    iterativeInsertTreeHandNode(&yourTree, card);
+
+    leaf6 = (TreeCardNodePtr)malloc(sizeof(TreeCardNode));
+    card = { face[12], suit[1], 13, 2 }; // rei de ouro
+
+    leaf6->vaderPtr = leaf2;
+
+    leaf6->card = card;
+    leaf6->leftPtr = leaf6->rightPtr = NULL;
+    leaf2->rightPtr = leaf6;
+
+    iterativeInsertTreeHandNode(&yourTree, card);
+
+    card = { face[10], suit[1], 11, 2 }; // valete de ouro
+    iterativeInsertTreeHandNode(&yourTree, card);
+
+    IOrd(myTree, &expectedDeckHead, &expectedDeckTail);
+
+    ListCardNodePtr actualDeckHead = NULL, actualDeckTail;
+    IOrd(yourTree, &actualDeckHead, &actualDeckTail);
+
+
+    EXPECT_TRUE(!(TestTreeParent(myTree, yourTree)));
+}

@@ -24,7 +24,7 @@ const char* suit[] = { "Hearts", "Diamonds", "Clubs", "Spades" };
 
 // Mude a string com o caminho (PATH) do diretório do seu projeto.
 // Use duas contrabarras para separar os diretórios.
-const char Path[] = { "C:\\Repos\\1ELE705_SEM17_S2DeckQueTree\\" };
+const char Path[] = { "C:\\Repos\\1ELE705_SEM19_Prova2\\" };
 
 //void view(ListCardNodePtr lPtr, FILE* cfPtr) {
 //
@@ -147,9 +147,9 @@ void createOneFr52Deck(ListCardNodePtr* sPtr) {
 int isDeckEmpty(ListCardNodePtr sPtr) {
 	// NÃO MODIFIQUE O CÓDIGO ACIMA
 
-		// INSIRA SEU CÓDIGO A PARTIR DESTE PONTO
+	// INSIRA SEU CÓDIGO A PARTIR DESTE PONTO
 
-		// NÃO MODIFIQUE O CÓDIGO ABAIXO
+	// NÃO MODIFIQUE O CÓDIGO ABAIXO
 }
 
 Card popFromDeck(ListCardNodePtr* sPtr) {
@@ -181,22 +181,83 @@ void enqueueOnDeck(ListCardNodePtr* headPtr, ListCardNodePtr* tailPtr, Card card
 void insertTreeHandNode(TreeCardNodePtr* tPtr, Card card) {
 	// NÃO MODIFIQUE O CÓDIGO ACIMA
 
-		// INSIRA SEU CÓDIGO A PARTIR DESTE PONTO
+	// INSIRA SEU CÓDIGO A PARTIR DESTE PONTO
 
-		// NÃO MODIFIQUE O CÓDIGO ABAIXO
+	// NÃO MODIFIQUE O CÓDIGO ABAIXO
 }
 
-// NÃO MODIFIQUE O CÓDIGO ACIMA
 
-//
-// CRIE UMA FUNÇÃO PARA INSERÇÃO DE NÓS EM UMA ÁRVORE ONDE CADA NÓ CONTÉM TAMBÉM O
-// LINK PARA SEU NÓ PAI.
-//
+void insertTreeHandNode2(TreeCardNodePtr* tPtr, Card card, TreeCardNodePtr vaderPtr) {
+	// NÃO MODIFIQUE O CÓDIGO ACIMA
 
-// INSIRA SEU CÓDIGO A PARTIR DESTE PONTO
+	// INSIRA SEU CÓDIGO A PARTIR DESTE PONTO
 
-// NÃO MODIFIQUE O CÓDIGO ABAIXO
+	// NÃO MODIFIQUE O CÓDIGO ABAIXO
+}
 
+void iterativeInsertTreeHandNode(TreeCardNodePtr* tPtr, Card card) {
+	// NÃO MODIFIQUE O CÓDIGO ACIMA
+
+	// INSIRA SEU CÓDIGO A PARTIR DESTE PONTO
+
+	// NÃO MODIFIQUE O CÓDIGO ABAIXO
+}
+
+Card* treeSearch(TreeCardNodePtr tPtr, Card keyCard) {
+	// NÃO MODIFIQUE O CÓDIGO ACIMA
+
+	// INSIRA SEU CÓDIGO A PARTIR DESTE PONTO
+
+	// NÃO MODIFIQUE O CÓDIGO ABAIXO
+}
+
+
+// Instruções para a segunda prova
+
+// Neste projeto você deverá completar as funções já implementadas durante os
+// assignments do curso e implementar três novas funções, descritas abaixo:
+
+// insertTreeHandNode2 - Esta função foi implementada anteriormente e, inclusive,
+// foram desenvolvidos os seus testes pelos alunos. A função insere a representação
+// de uma carta de baralho em uma árvore binária. Esta função opera de maneira
+// idêntica à função inserTreeHandNode, no entanto, adicionalmente os nós inseridos 
+// contém informações sobre o nó pai. Essa função deve ser implementada de forma
+// recursiva. Os parâmetros da função são: um elemento do tipo TreeCardNodePtr*
+// que recebe o endereço do ponteiro da árvore, um elemento do tipo Card, que 
+// contém as informações sobre a carta a ser inserida na árvore e um elemento do
+// tipo TreeCardNodePtr que serve para a passagem do endereço do nó pai para 
+// cada instância de recursão da função. A função não deve inserir uma carta 
+// que já exista na árvore.
+
+// iterativeInsertTreeHandNode - Deve ser implementada como uma versão iterativa
+// (não recursiva) da função insertTreeHandNode2. A função iterativeInsertTreeHandNode
+// tem a mesma funcionalidade que a função insertTreeHandNode2, no entanto, 
+// a função iterativeInsertTreeHandNode deve ser implementada na forma iterativa,
+// ou seja, sem o uso da recursão.
+
+// treeSearch - Esta função busca em uma árvore binária de cartas de baralho uma
+// determinada carta. Se a carta estiver inserida na árvore, a função retorna
+// o endereço para as informações da carta no nó encontrado. Se não estiver, 
+// retorna nulo. A função não modifica a árvore.
+// A função recebe como parâmetros o endereço do nó raiz de uma árvore
+// (tipo TreeCardNodePtr) e as informações da carta de baralho a ser procurada na 
+// na árvore (tipo Card). A função retorna pelo retorno usual da função um tipo Card*, 
+// que é um endereço da struct com as informações da carta no nó encontrado 
+// na árvore. Se a carta não for encontrada, o valor de retorno deve ser NULL.
+// Esta função deve ser implementada na forma recursiva. Para isto, lembre-se
+// que os nós abaixo e a esquerda de um determinado nó na árvore contém
+// valores menores que este nó. Já os nós abaixo e à direita, contém valores
+// maiores.
+
+// Dica: Sempre que compilar seu código, leia os warnings. Quando se implementa
+// código com muitas operações com ponteiros e alocações dinâmicas de memória, os
+// warnings do compilador ajudam muito a produzir código sem erros. Normalmente os
+// erros de endereçamento e os erros na alocação de memória (alocar menos espaço que
+// o necessário para a variável, por exemplo) produzem código compilável que terão
+// grande chance de induzir erros na execução, inclusive disparar excessões do sistema.
+// Assim, atentem para os avisos do compilador e tentem resolvê-los.
+
+// Instruções anteriores
 
 // Neste assignment você irá implementar a função recursiva de inserção em uma
 // árvore, onde cada nó contém também o link para o nó pai.
@@ -212,7 +273,6 @@ void insertTreeHandNode(TreeCardNodePtr* tPtr, Card card) {
 // usando o mesmo critério das funções presentes neste arquivo.
 // Os pormenores para a confecção deste assignemnt encontram-se na vídeo
 // aula da semana 17.
-
 
 // Este projeto implementa funções para o gerenciamento de cartas de.
 // baralho, que podem ser utilizadas para a construção de um jogo.
@@ -312,6 +372,7 @@ void insertTreeHandNode(TreeCardNodePtr* tPtr, Card card) {
 
 
 
+// NÃO FAZER A FUNÇÃO VIEW
 //
 // A função view deve imprimir em um arquivo sequencial de texto o conteúdo 
 // impresso de uma lista de cartas.

@@ -5,10 +5,10 @@
   </ItemGroup>
   <ItemGroup>
     <Filter Include="test">
-      <UniqueIdentifier>{5b9d8bd1-2b07-4fc8-aaf0-dc323b427b7f}</UniqueIdentifier>
+      <UniqueIdentifier>{ee4b6d7e-d376-4f58-bfbc-c6af4dbc8587}</UniqueIdentifier>
     </Filter>
     <Filter Include="src">
-      <UniqueIdentifier>{8ab4f21e-2a53-47d0-b0fa-137092b02897}</UniqueIdentifier>
+      <UniqueIdentifier>{052d7c84-d8a1-43d2-9aff-62008157416e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

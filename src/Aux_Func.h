@@ -20,4 +20,7 @@ size_t createFileOfOneFr52Deck(ListCardNodePtr* sPtr);
 size_t fillRandomFile(int* randArray);
 size_t saveFileOfShuffledFr52Deck(ListCardNodePtr sPtr);
 
+// Contribuições dos alunos
+int TestTreeParent(TreeCardNodePtr myTree, TreeCardNodePtr yourTree);
+
 #endif //Aux_Func
